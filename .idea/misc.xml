@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/indirenler 1/MobilUygulama/LoginPage/app/src/main/res/drawable/buttonbackgroundcolor.xml" value="0.1" />
+        <entry key="..\:/indirenler 1/MobilUygulama/LoginPage/app/src/main/res/drawable/editbackroundcolor.xml" value="0.1925" />
+        <entry key="..\:/indirenler 1/MobilUygulama/LoginPage/app/src/main/res/drawable/rounded_corner.xml" value="0.105" />
+        <entry key="..\:/indirenler 1/MobilUygulama/LoginPage/app/src/main/res/layout/activity_homepage.xml" value="0.33" />
+        <entry key="..\:/indirenler 1/MobilUygulama/LoginPage/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/indirenler 1/MobilUygulama/LoginPage/app/src/main/res/layout/activity_tab_layout.xml" value="0.1" />
+        <entry key="..\:/indirenler 1/MobilUygulama/LoginPage/app/src/main/res/layout/fragment_algorithm.xml" value="0.1" />
+        <entry key="..\:/indirenler 1/MobilUygulama/LoginPage/app/src/main/res/layout/fragment_courses.xml" value="0.35260416666666666" />
+        <entry key="..\:/indirenler 1/MobilUygulama/LoginPage/app/src/main/res/layout/fragment_employess.xml" value="0.36666666666666664" />
+        <entry key="..\:/indirenler 1/MobilUygulama/LoginPage/app/src/main/res/layout/fragment_login.xml" value="0.35260416666666666" />
+        <entry key="..\:/indirenler 1/MobilUygulama/LoginPage/app/src/main/res/layout/fragment_login2.xml" value="0.18802083333333333" />
+        <entry key="..\:/indirenler 1/MobilUygulama/LoginPage/app/src/main/res/layout/fragment_sign_up.xml" value="0.25679347826086957" />
+        <entry key="..\:/indirenler 1/MobilUygulama/LoginPage/app/src/main/res/layout/item_layout.xml" value="0.33" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

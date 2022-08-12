@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/emailTextHomepage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Homepage">
+
+    <TextView
+        android:id="@+id/homepageText"
+        android:layout_width="383dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="316dp"
+        android:layout_marginBottom="61dp"
+        android:gravity="center"
+        android:text="Hello, welcome to the homepage"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/nextButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="105dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="117dp"
+        android:layout_marginBottom="230dp"
+        android:background="@drawable/editbackroundcolor"
+        android:onClick="nextButton"
+        android:text="Next"
+        android:textColor="@color/white"
+        app:circularflow_radiusInDP="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/homepageText"
+        app:layout_constraintTop_toBottomOf="@+id/homepageText" />
+</androidx.constraintlayout.widget.ConstraintLayout>
