@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#BE80FF"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
 
     <EditText
         android:id="@+id/emailText"
@@ -33,14 +33,15 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="28dp"
         android:ems="10"
-        android:hint="Password"
         android:inputType="textPassword"
-        android:longClickable="false"
+        android:hint="Password"
         android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/loginButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailText" />
+        app:layout_constraintTop_toBottomOf="@+id/emailText"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/loginButton"

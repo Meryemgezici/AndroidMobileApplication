@@ -5,7 +5,7 @@
     android:id="@+id/emailTextHomepage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Homepage">
+    tools:context=".view.Homepage">
 
     <TextView
         android:id="@+id/homepageText"

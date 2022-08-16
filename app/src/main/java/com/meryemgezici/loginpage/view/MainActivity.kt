@@ -1,4 +1,4 @@
-package com.meryemgezici.loginpage
+package com.meryemgezici.loginpage.view
 
 import android.content.Context
 import android.content.Intent
@@ -9,16 +9,17 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.meryemgezici.loginpage.R
+import com.meryemgezici.loginpage.adapter.RecyclerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var preferences: SharedPreferences
-
+    private var isShow=false
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -59,19 +60,12 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+
+
         //finish()
     }
 
-    /*fun showPassword(view:View){
-        var isShow=false
-        if(isShow){
-            passwordText.transformationMethod=PasswordTransformationMethod.getInstance()
-            showHidePassword.setImageResource(R.drawable.ic_baseline_visibility_24)
-            isShow=true
-        }else{
-            passwordText.transformationMethod=HideReturnsTransformationMethod.getInstance()
-            showHidePassword.setImageResource(R.drawable.ic_baseline_visibility_off_24)
-            isShow=false
-        }
-    }*/
+
+
+
 }

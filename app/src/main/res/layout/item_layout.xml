@@ -39,7 +39,7 @@
 
             <TextView
                 android:id="@+id/nameText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="Name"
@@ -47,11 +47,20 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/userInformationText"
+                android:id="@+id/ageText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="User Information"
+                android:text="Age"
+                android:textColor="#CCAAAD"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/genderText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Gender"
                 android:textColor="#CCAAAD"
                 android:textSize="20sp" />
 

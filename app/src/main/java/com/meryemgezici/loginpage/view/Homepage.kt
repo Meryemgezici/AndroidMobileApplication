@@ -1,11 +1,11 @@
-package com.meryemgezici.loginpage
+package com.meryemgezici.loginpage.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.meryemgezici.loginpage.R
 import kotlinx.android.synthetic.main.activity_homepage.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 class Homepage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,11 +15,11 @@ class Homepage : AppCompatActivity() {
         val intent=intent
         val email=intent.getStringExtra("email")
 
-        homepageText.text="Hello "+email+" ,welcome to the homepage"
+        homepageText.text= "Hello ${email} ,welcome to the homepage"
     }
 
     fun nextButton(view: View){
-        intent= Intent(applicationContext,TabLayout::class.java)
+        intent= Intent(applicationContext, TabLayout::class.java)
         startActivity(intent)
     }
 }

@@ -1,4 +1,4 @@
-package com.meryemgezici.loginpage.tablayout.adapters.fragments
+package com.meryemgezici.loginpage.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
