@@ -10,7 +10,6 @@ import com.meryemgezici.loginpage.R
 import com.meryemgezici.loginpage.databinding.ActivityMainBinding
 import com.meryemgezici.loginpage.sharedPreferences.Preferences
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var preferences: Preferences
@@ -61,11 +60,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
     fun loginButton(view: View) {
-        //var registeredUser = preferences1.getString("email", "")
-        //var registeredPassword = preferences1.getString("password", "")
 
         loginEmail = binding.emailText.text.toString()
         loginPassword = binding.passwordText.text.toString()
@@ -89,10 +84,5 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, "Your password is incorrect", Toast.LENGTH_LONG)
                 .show()
         }
-
-
-
     }
-
-
 }

@@ -8,25 +8,26 @@ import com.meryemgezici.loginpage.fragments.EmployeesFragment
 import com.meryemgezici.loginpage.fragments.ShipmentsFragment
 import com.meryemgezici.loginpage.fragments.DeliveryFragment
 
-class ViewPagerAdapter(fragmentManager: FragmentManager,lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager,lifecycle){
+class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
+    FragmentStateAdapter(fragmentManager, lifecycle) {
     override fun getItemCount(): Int {
         return 3
     }
 
     override fun createFragment(position: Int): Fragment {
-            return  when(position){
-                0->{
-                    EmployeesFragment()
-                }
-                1->{
-                    ShipmentsFragment()
-                }
-                2->{
-                    DeliveryFragment()
-                }
-                else->{
-                    Fragment()
-                }
+        return when (position) {
+            0 -> {
+                EmployeesFragment()
+            }
+            1 -> {
+                ShipmentsFragment()
+            }
+            2 -> {
+                DeliveryFragment()
+            }
+            else -> {
+                Fragment()
+            }
         }
     }
 }

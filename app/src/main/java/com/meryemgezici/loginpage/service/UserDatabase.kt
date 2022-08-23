@@ -6,35 +6,31 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.meryemgezici.loginpage.model.User
 
-@Database(entities = [User::class],version = 2)
+@Database(entities = [User::class], version = 2)
 abstract class UserDatabase : RoomDatabase() {
 
-    abstract fun userDao() : UserDAO
+    abstract fun userDao(): UserDAO
 
     //Singleton
-
     companion object {
 
-        @Volatile private var instance : UserDatabase? = null
+        @Volatile
+        private var instance: UserDatabase? = null
 
         private val lock = Any()
 
-        operator fun invoke(context : Context) = instance ?: synchronized(lock){
+        operator fun invoke(context: Context) = instance ?: synchronized(lock) {
             instance ?: createDatabase(context).also {
                 instance = it
             }
         }
 
-
         private fun createDatabase(context: Context) = Room.databaseBuilder(
             context.applicationContext,
-            UserDatabase::class.java,"user").build()
+            UserDatabase::class.java, "user"
+        ).build()
 
     }
-
-
-
-
 
 }
 

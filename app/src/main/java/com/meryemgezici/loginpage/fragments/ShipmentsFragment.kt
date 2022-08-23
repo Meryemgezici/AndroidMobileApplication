@@ -10,7 +10,6 @@ import com.meryemgezici.loginpage.R
 
 class ShipmentsFragment : Fragment() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,6 +22,5 @@ class ShipmentsFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_shipments, container, false)
     }
-
 
 }

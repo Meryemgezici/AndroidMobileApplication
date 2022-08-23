@@ -9,14 +9,14 @@ import com.bumptech.glide.request.RequestOptions
 import com.meryemgezici.loginpage.R
 
 
-fun ImageView.downloadingImage(url: String?, placeholder : CircularProgressDrawable){
+fun ImageView.downloadingImage(url: String?, placeholder: CircularProgressDrawable) {
 
     val options = RequestOptions().placeholder(placeholder).error(R.mipmap.ic_launcher_round)
 
     Glide.with(context).setDefaultRequestOptions(options).load(url).into(this)
 }
 
-fun makePlaceholder(context: Context) : CircularProgressDrawable {
+fun makePlaceholder(context: Context): CircularProgressDrawable {
     return CircularProgressDrawable(context).apply {
         strokeWidth = 8f
         centerRadius = 40f
@@ -25,6 +25,6 @@ fun makePlaceholder(context: Context) : CircularProgressDrawable {
 }
 
 @BindingAdapter("android:downloadImage")
-fun downloadImage(view: ImageView, url : String?){
+fun downloadImage(view: ImageView, url: String?) {
     view.downloadingImage(url, makePlaceholder(view.context))
 }

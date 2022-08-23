@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.meryemgezici.loginpage.R
 
-
 class DeliveryFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,8 +21,5 @@ class DeliveryFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_delivery, container, false)
     }
-
-
-
 
 }

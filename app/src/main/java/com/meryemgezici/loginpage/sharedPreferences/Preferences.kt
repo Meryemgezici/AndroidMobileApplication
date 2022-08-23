@@ -24,20 +24,17 @@ class Preferences(context: Context?) {
         editor?.commit()
     }
 
-    fun isLogin(): Boolean?{
-        return pref?.getBoolean(IS_lOGIN,false)
+    fun isLogin(): Boolean? {
+        return pref?.getBoolean(IS_lOGIN, false)
     }
 
-    fun getEmail() :String?{
-        return pref?.getString("email","")
+    fun getEmail(): String? {
+        return pref?.getString("email", "")
     }
 
-    fun removeData(){
+    fun removeData() {
         editor?.clear()
         editor?.commit()
     }
-
-
-
 
 }

@@ -8,12 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.meryemgezici.loginpage.R
 import com.meryemgezici.loginpage.model.User
-import com.meryemgezici.loginpage.util.Resource
 import com.meryemgezici.loginpage.util.downloadingImage
 import com.meryemgezici.loginpage.util.makePlaceholder
 
-class RecyclerAdapter(val userList : ArrayList<User>) : RecyclerView.Adapter<RecyclerAdapter.UserViewHolder>()
-{
+class RecyclerAdapter(val userList: ArrayList<User>) :
+    RecyclerView.Adapter<RecyclerAdapter.UserViewHolder>() {
 
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val profileView: ImageView = itemView.findViewById(R.id.profileView)
@@ -31,14 +30,16 @@ class RecyclerAdapter(val userList : ArrayList<User>) : RecyclerView.Adapter<Rec
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val user = userList[position]
-        //holder.profileView.setImageResource(user.image)
         holder.nameText.text = user.name
         holder.ageText.text = user.age
         holder.genderText.text = user.gender
 
         // Glide.with(holder.itemView.context).load(user.image)
         //     .into(holder.profileView)
-        holder.profileView.downloadingImage(userList[position].image, makePlaceholder(holder.itemView.context))
+        holder.profileView.downloadingImage(
+            userList[position].image,
+            makePlaceholder(holder.itemView.context)
+        )
 
     }
 
@@ -46,7 +47,7 @@ class RecyclerAdapter(val userList : ArrayList<User>) : RecyclerView.Adapter<Rec
         return userList.size
     }
 
-    fun userListUpdate(newUserList: List<User>){
+    fun userListUpdate(newUserList: List<User>) {
         userList.clear()
         userList.addAll(newUserList)
         notifyDataSetChanged()

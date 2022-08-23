@@ -18,6 +18,5 @@ class UserAPIService {
 
     fun getData(): Single<List<User>> {
         return api.getUser()
-        //return api.getUser()
     }
 }
