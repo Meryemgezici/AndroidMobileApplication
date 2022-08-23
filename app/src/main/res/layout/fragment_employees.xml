@@ -5,10 +5,37 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".fragments.EmployeesFragment">
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignWithParentIfMissing="false" />
+        android:layout_alignWithParentIfMissing="false"
+        tools:listitem="@layout/item_layout" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        tools:visibility="visible" />
+
+    <!--If the application is not able to
+        fetch/ expose the data to the view-->
+    <TextView
+        android:id="@+id/text_view_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="8dp"
+        android:gravity="center_horizontal"
+        android:visibility="invisible"
+        tools:text="Error Message"
+        tools:visibility="visible" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </RelativeLayout>

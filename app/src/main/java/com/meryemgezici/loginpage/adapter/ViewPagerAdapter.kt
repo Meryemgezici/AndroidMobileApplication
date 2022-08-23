@@ -5,8 +5,8 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.meryemgezici.loginpage.fragments.EmployeesFragment
-import com.meryemgezici.loginpage.fragments.CoursesFragment
-import com.meryemgezici.loginpage.fragments.LoginFragment
+import com.meryemgezici.loginpage.fragments.ShipmentsFragment
+import com.meryemgezici.loginpage.fragments.DeliveryFragment
 
 class ViewPagerAdapter(fragmentManager: FragmentManager,lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager,lifecycle){
     override fun getItemCount(): Int {
@@ -19,10 +19,10 @@ class ViewPagerAdapter(fragmentManager: FragmentManager,lifecycle: Lifecycle) : 
                     EmployeesFragment()
                 }
                 1->{
-                    CoursesFragment()
+                    ShipmentsFragment()
                 }
                 2->{
-                    LoginFragment()
+                    DeliveryFragment()
                 }
                 else->{
                     Fragment()

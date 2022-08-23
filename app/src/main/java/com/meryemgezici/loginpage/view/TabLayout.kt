@@ -25,10 +25,10 @@ class TabLayout : AppCompatActivity() {
                     tab.text = "Employees"
                 }
                 1->{
-                    tab.text = "Courses"
+                    tab.text = "Shipments"
                 }
                 2->{
-                    tab.text = "LOG OUT"
+                    tab.text = "Delivery"
                 }
             }
         }.attach()

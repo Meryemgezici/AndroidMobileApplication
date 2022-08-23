@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.meryemgezici.loginpage.R
-import com.meryemgezici.loginpage.fragments.EmployeesFragment
 import com.meryemgezici.loginpage.model.User
+import com.meryemgezici.loginpage.util.Resource
+import com.meryemgezici.loginpage.util.downloadingImage
+import com.meryemgezici.loginpage.util.makePlaceholder
 
-class RecyclerAdapter(private val userList: ArrayList<User>, employessFragment: EmployeesFragment) :
-    RecyclerView.Adapter<RecyclerAdapter.UserViewHolder>() {
+class RecyclerAdapter(val userList : ArrayList<User>) : RecyclerView.Adapter<RecyclerAdapter.UserViewHolder>()
+{
 
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val profileView: ImageView = itemView.findViewById(R.id.profileView)
@@ -23,7 +24,8 @@ class RecyclerAdapter(private val userList: ArrayList<User>, employessFragment: 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
         return UserViewHolder(view)
     }
 
@@ -34,13 +36,19 @@ class RecyclerAdapter(private val userList: ArrayList<User>, employessFragment: 
         holder.ageText.text = user.age
         holder.genderText.text = user.gender
 
-        Glide.with(holder.itemView.context).load(user.image)
-            .into(holder.profileView)
-
+        // Glide.with(holder.itemView.context).load(user.image)
+        //     .into(holder.profileView)
+        holder.profileView.downloadingImage(userList[position].image, makePlaceholder(holder.itemView.context))
 
     }
 
     override fun getItemCount(): Int {
         return userList.size
+    }
+
+    fun userListUpdate(newUserList: List<User>){
+        userList.clear()
+        userList.addAll(newUserList)
+        notifyDataSetChanged()
     }
 }

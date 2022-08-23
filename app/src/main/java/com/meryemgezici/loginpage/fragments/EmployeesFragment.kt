@@ -5,32 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.meryemgezici.loginpage.R
 import com.meryemgezici.loginpage.adapter.RecyclerAdapter
-import com.meryemgezici.loginpage.model.User
-import com.meryemgezici.loginpage.service.UserAPI
-import kotlinx.android.synthetic.main.fragment_employees.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import com.meryemgezici.loginpage.databinding.FragmentEmployeesBinding
+import com.meryemgezici.loginpage.viewmodel.UserListViewModel
 
+//@AndroidEntryPoint
 class EmployeesFragment : Fragment() {
 
-
-    private val BASE_URL = "https://raw.githubusercontent.com/"
-    private var userList: ArrayList<User>? = null
-    private var recyclerViewAdapter: RecyclerAdapter? = null
+    private lateinit var viewModel: UserListViewModel
+    private val recyclerAdapter = RecyclerAdapter(arrayListOf())
+    private lateinit var binding: FragmentEmployeesBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        loadData()
-
     }
 
     override fun onCreateView(
@@ -38,50 +29,67 @@ class EmployeesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater!!.inflate(R.layout.fragment_employees, container, false)
-        val recyclerView = rootView.findViewById(R.id.recyclerView) as RecyclerView
-        recyclerView.setHasFixedSize(true);
-        recyclerView.layoutManager = LinearLayoutManager(activity);//Linear Items
-
-        recyclerView.adapter = userList?.let { RecyclerAdapter(it, this) }// struck with here
-        recyclerView.layoutManager = LinearLayoutManager(context)
-
-        return rootView
+        // Inflate the layout for this fragment
+        binding = FragmentEmployeesBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    private fun loadData() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build().create(UserAPI::class.java)
+        viewModel = ViewModelProvider(this)[UserListViewModel::class.java]
+        viewModel.refreshFromInternet()
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        binding.recyclerView.adapter = recyclerAdapter
 
-        val call = retrofit.getData()
-        call.enqueue(object : Callback<List<User>> {
-            override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                t.printStackTrace()
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.textViewError.visibility = View.GONE
+            binding.recyclerView.visibility = View.VISIBLE
+            binding.recyclerView.visibility = View.GONE
+            viewModel.refreshData()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
+
+        observeLiveData()
+
+    }
+
+    fun observeLiveData() {
+        viewModel.users.observe(viewLifecycleOwner, Observer { users ->
+            users?.let {
+                binding.recyclerView.visibility = View.VISIBLE
+                recyclerAdapter.userListUpdate(users)
             }
+        })
 
-            override fun onResponse(
-                call: Call<List<User>>,
-                response: Response<List<User>>
-            ) {
-
-                if (response.isSuccessful) {
-                    response.body()?.let {
-                        userList = ArrayList(it)
-                        userList?.let {
-                            recyclerViewAdapter = RecyclerAdapter(it, this@EmployeesFragment)
-                            recyclerView.adapter = recyclerViewAdapter
-
-                        }
-
-                    }
+        viewModel.userErrorMessage.observe(viewLifecycleOwner, Observer { error ->
+            error?.let {
+                if (it) {
+                    binding.textViewError.visibility = View.VISIBLE
+                    binding.recyclerView.visibility = View.GONE
+                } else {
+                    binding.textViewError.visibility = View.GONE
                 }
             }
         })
+
+        viewModel.userLoading.observe(viewLifecycleOwner, Observer { loading ->
+            loading?.let {
+                if (it) {
+                    binding.recyclerView.visibility = View.GONE
+                    binding.textViewError.visibility = View.GONE
+                    binding.progressBar.visibility = View.VISIBLE
+                } else {
+                    binding.progressBar.visibility = View.GONE
+                }
+            }
+        })
+
     }
-
-
-    //return inflater.inflate(R.layout.fragment_employess, container, false)
 }
+
+
+
+
+
+
