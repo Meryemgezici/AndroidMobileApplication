@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -11,7 +12,6 @@
     app:cardCornerRadius="12dp"
     app:cardElevation="3dp"
     app:contentPadding="4dp">
-
 
 
     <RelativeLayout
@@ -29,7 +29,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/profile_icon" />
+            tools:src="@drawable/profile_icon" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,27 +44,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="Name"
                 android:textColor="#CCAAAD"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                tools:text="Name" />
 
             <TextView
                 android:id="@+id/ageText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="Age"
                 android:textColor="#CCAAAD"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                tools:text="Age" />
 
             <TextView
                 android:id="@+id/genderText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="Gender"
                 android:textColor="#CCAAAD"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                tools:text="Gender" />
 
         </LinearLayout>
     </RelativeLayout>

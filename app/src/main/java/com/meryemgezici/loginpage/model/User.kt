@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-@Entity
+@Entity(tableName = "user")
 data class User(
 
     @ColumnInfo(name="age")
@@ -24,3 +24,6 @@ data class User(
     @PrimaryKey(autoGenerate = true)
     var uuid : Int = 0
 }
+
+
+

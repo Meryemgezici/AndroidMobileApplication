@@ -9,6 +9,8 @@ import android.widget.Toast
 import com.meryemgezici.loginpage.R
 import com.meryemgezici.loginpage.databinding.ActivityMainBinding
 import com.meryemgezici.loginpage.sharedPreferences.Preferences
+import dagger.hilt.android.AndroidEntryPoint
+
 
 class MainActivity : AppCompatActivity() {
 

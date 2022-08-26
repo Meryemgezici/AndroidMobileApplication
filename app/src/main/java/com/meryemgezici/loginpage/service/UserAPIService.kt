@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class UserAPIService {
 
-    private val BASE_URL = "https://raw.githubusercontent.com/"
+   /* private val BASE_URL = "https://raw.githubusercontent.com/"
     private val api = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
@@ -18,5 +18,5 @@ class UserAPIService {
 
     fun getData(): Single<List<User>> {
         return api.getUser()
-    }
+    }*/
 }

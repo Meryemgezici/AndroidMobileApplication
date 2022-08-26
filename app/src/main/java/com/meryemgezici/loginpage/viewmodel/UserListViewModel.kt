@@ -1,6 +1,6 @@
 package com.meryemgezici.loginpage.viewmodel
 
-import android.app.Application
+/*import android.app.Application
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.meryemgezici.loginpage.model.User
@@ -23,7 +23,7 @@ class UserListViewModel(application: Application) : BaseViewModel(application) {
     private val disposable = CompositeDisposable()
     private val timeSharedPreferences = TimeSharedPreferences(getApplication())
 
-    fun refreshData() {
+    fun refreshFromSqlite() {
         /*val kaydedilmeZamani = timeSharedPreferences.getTime()
         if (kaydedilmeZamani != null && kaydedilmeZamani != 0L && System.nanoTime() - kaydedilmeZamani < guncellemeZamani) {
             //Sqlite'tan çek
@@ -45,7 +45,7 @@ class UserListViewModel(application: Application) : BaseViewModel(application) {
 
             val usersList = UserDatabase(getApplication()).userDao().getAllUser()
             showUsers(usersList)
-            Toast.makeText(getApplication(), "Besinleri Room'dan Aldık", Toast.LENGTH_LONG).show()
+            Toast.makeText(getApplication(), "Çalışanları Room'dan Aldık", Toast.LENGTH_LONG).show()
 
         }
 
@@ -61,7 +61,7 @@ class UserListViewModel(application: Application) : BaseViewModel(application) {
                         saveSqlite(t)
                         Toast.makeText(
                             getApplication(),
-                            "Besinleri Internet'ten Aldık",
+                            "Çalışanları Internet'ten Aldık",
                             Toast.LENGTH_LONG
                         ).show()
 
@@ -100,6 +100,21 @@ class UserListViewModel(application: Application) : BaseViewModel(application) {
 
         timeSharedPreferences.saveTime(System.nanoTime())
     }
+}*/
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import com.meryemgezici.loginpage.repository.UserRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.scopes.FragmentScoped
+import javax.inject.Inject
+
+@HiltViewModel
+class UserListViewModel @Inject constructor(
+    repository: UserRepository
+) : ViewModel() {
+
+    val users = repository.getUsers().asLiveData()
 }
 
 

@@ -1,32 +1,32 @@
 package com.meryemgezici.loginpage.fragments
 
-import android.app.Application
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.meryemgezici.loginpage.adapter.RecyclerAdapter
 import com.meryemgezici.loginpage.databinding.FragmentEmployeesBinding
-import com.meryemgezici.loginpage.model.User
 import com.meryemgezici.loginpage.util.ConnectionNetwork
+import com.meryemgezici.loginpage.util.Resource
 import com.meryemgezici.loginpage.viewmodel.UserListViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.WithFragmentBindings
+import dagger.hilt.android.lifecycle.HiltViewModel
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
+//@WithFragmentBindings
 class EmployeesFragment : Fragment() {
 
-    private lateinit var viewModel: UserListViewModel
-    private val recyclerAdapter = RecyclerAdapter(arrayListOf())
+    private val viewModel: UserListViewModel by viewModels()
+    private val recyclerAdapter = RecyclerAdapter()
     private lateinit var binding: FragmentEmployeesBinding
-    private lateinit var cld: ConnectionNetwork
+    //private lateinit var cld: ConnectionNetwork
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,16 +45,31 @@ class EmployeesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this)[UserListViewModel::class.java]
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        binding.recyclerView.adapter = recyclerAdapter
+        //viewModel = ViewModelProvider(this)[UserListViewModel::class.java]
+       binding.apply {
+           recyclerView.layoutManager = LinearLayoutManager(context)
+           recyclerView.adapter = recyclerAdapter
 
-        checkNetworkConnection()
-        observeLiveData()
+           viewModel.users.observe(viewLifecycleOwner, Observer { result ->
+
+               recyclerAdapter.submitList(result.data)
+               progressBar.isVisible = result is Resource.Loading<*> && result.data.isNullOrEmpty()
+               textViewError.isVisible =result is Resource.Error<*> && result.data.isNullOrEmpty()
+               textViewError.text = result.error?.localizedMessage
+
+           })
+           /*viewModel.users.observe(viewLifecycleOwner, Observer { users ->
+               users?.let {
+                   binding.recyclerView.visibility = View.VISIBLE
+                   //recyclerAdapter.userListUpdate(users)
+               }
+           })*/
+
+       }
 
     }
 
-    fun observeLiveData() {
+   /* fun observeLiveData() {
         viewModel.users.observe(viewLifecycleOwner, Observer { users ->
             users?.let {
                 binding.recyclerView.visibility = View.VISIBLE
@@ -85,9 +100,9 @@ class EmployeesFragment : Fragment() {
             }
         })
 
-    }
+    }*/
 
-    private fun checkNetworkConnection() {
+    /*private fun checkNetworkConnection() {
         cld = ConnectionNetwork(requireActivity().application)
 
         cld.observe(viewLifecycleOwner, Observer { isConnected ->
@@ -96,11 +111,11 @@ class EmployeesFragment : Fragment() {
                 viewModel.refreshFromInternet()
 
             } else {
-                viewModel.refreshData()
+                viewModel.refreshFromSqlite()
             }
 
         })
-    }
+    }*/
 }
 
 

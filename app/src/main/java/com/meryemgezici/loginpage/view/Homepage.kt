@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.TextView
 import com.meryemgezici.loginpage.R
 import com.meryemgezici.loginpage.sharedPreferences.Preferences
+import dagger.hilt.android.AndroidEntryPoint
+
 
 class Homepage : AppCompatActivity() {
 
@@ -58,5 +60,6 @@ class Homepage : AppCompatActivity() {
             finish()
         }
     }
+
 
 }

@@ -11,7 +11,7 @@ class UserRepository @Inject constructor(
     private val api: UserAPI,
     private val db: UserDatabase
 ) {
-    /* private val userDao = db.userDao()
+     private val userDao = db.userDao()
 
       fun getUsers() = networkBoundResource(
          query = {
@@ -19,7 +19,7 @@ class UserRepository @Inject constructor(
          },
          fetch = {
              delay(2000)
-             api.getUser()
+             api.getUsers()
          },
          saveFetchResult = { users ->
              db.withTransaction {
@@ -27,5 +27,5 @@ class UserRepository @Inject constructor(
                  userDao.insertAll(users)
              }
          }
-     )*/
+     )
 }

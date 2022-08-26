@@ -1,6 +1,6 @@
 package com.meryemgezici.loginpage.adapter
 
-import android.view.LayoutInflater
+/*import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -51,5 +51,59 @@ class RecyclerAdapter(val userList: ArrayList<User>) :
         userList.clear()
         userList.addAll(newUserList)
         notifyDataSetChanged()
+    }
+}*/
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.meryemgezici.loginpage.databinding.ItemLayoutBinding
+import com.meryemgezici.loginpage.model.User
+
+class RecyclerAdapter :
+    ListAdapter<User, RecyclerAdapter.UserViewHolder>(UserComparator()) {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
+        val binding =
+            ItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return UserViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
+        val currentItem = getItem(position)
+
+        if(currentItem !=null){
+            holder.bind(currentItem)
+        }
+
+    }
+
+    class UserViewHolder(private val binding: ItemLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+            fun bind(user:User){
+                binding.apply {
+                    Glide.with(itemView)
+                        .load(user.image)
+                        .into(profileView)
+
+                     nameText.text =user.name
+                     ageText.text=user.age
+                     genderText.text= user.gender
+                }
+            }
+
+    }
+
+
+    class UserComparator : DiffUtil.ItemCallback<User>() {
+        override fun areItemsTheSame(oldItem: User, newItem: User) =
+            oldItem.uuid == newItem.uuid
+
+        override fun areContentsTheSame(oldItem: User, newItem: User) =
+            oldItem == newItem
     }
 }

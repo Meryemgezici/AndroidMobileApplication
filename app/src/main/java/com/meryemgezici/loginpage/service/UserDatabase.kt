@@ -1,18 +1,17 @@
 package com.meryemgezici.loginpage.service
 
-import android.content.Context
+
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.meryemgezici.loginpage.model.User
 
-@Database(entities = [User::class], version = 2)
+@Database(entities = [User::class], version = 1)
 abstract class UserDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDAO
 
     //Singleton
-    companion object {
+    /*companion object {
 
         @Volatile
         private var instance: UserDatabase? = null
@@ -30,7 +29,7 @@ abstract class UserDatabase : RoomDatabase() {
             UserDatabase::class.java, "user"
         ).build()
 
-    }
+    }*/
 
 }
 

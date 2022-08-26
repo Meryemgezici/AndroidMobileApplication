@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "228516994941",
+    "project_id": "loginpage-e1d5d",
+    "storage_bucket": "loginpage-e1d5d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228516994941:android:89911fd015986f184eb614",
+        "android_client_info": {
+          "package_name": "com.meryemgezici.loginpage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "228516994941-d81h419u883fb2m9n5nmmfv47nn7k96q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_sZaFliEVeYFaW-CLUTPZmn1bPlZYxC8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "228516994941-d81h419u883fb2m9n5nmmfv47nn7k96q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

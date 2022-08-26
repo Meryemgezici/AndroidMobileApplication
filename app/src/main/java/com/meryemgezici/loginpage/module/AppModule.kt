@@ -7,6 +7,11 @@ import com.meryemgezici.loginpage.service.UserDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.android.components.FragmentComponent
+import dagger.hilt.android.components.ViewWithFragmentComponent
+import dagger.hilt.android.scopes.FragmentScoped
+import dagger.hilt.android.scopes.ViewScoped
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,7 +21,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    /*@Provides
+    @Provides
     @Singleton
     fun provideRetrofit(): Retrofit =
         Retrofit.Builder()
@@ -27,12 +32,12 @@ object AppModule {
     @Provides
     @Singleton
     fun provideUserApi(retrofit: Retrofit): UserAPI =
-        retrofit.create(UserAPI::class.java)*/
+        retrofit.create(UserAPI::class.java)
 
     @Provides
     @Singleton
     fun provideDatabase(app: Application): UserDatabase =
-        Room.databaseBuilder(app, UserDatabase::class.java, "user")
+        Room.databaseBuilder(app, UserDatabase::class.java, "user_database")
             .build()
 }
 
